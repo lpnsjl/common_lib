@@ -1,0 +1,3 @@
+C:/Users/andrew/Desktop/common_lib/HexConverter/cmake-build-debug/CMakeFiles/HexConverter.dir
+C:/Users/andrew/Desktop/common_lib/HexConverter/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/andrew/Desktop/common_lib/HexConverter/cmake-build-debug/CMakeFiles/rebuild_cache.dir

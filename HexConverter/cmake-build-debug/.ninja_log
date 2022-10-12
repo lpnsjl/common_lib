@@ -1,0 +1,7 @@
+# ninja log v5
+454	548	1665444676208002771	test	cdf7ed1e1efd98a0
+0	2	0	clean	19c59cb4a42e16c9
+283	342	1665578332222110547	HexConverter	f3347f49dd962680
+0	562	6872821523804707	CMakeFiles/HexConverter.dir/main.cpp.obj	9d67e998f58403db
+5	565	6872821523834632	CMakeFiles/HexConverter.dir/HexConverter.cpp.obj	af7ee644139a542a
+565	740	6872821525569985	HexConverter.exe	6350bf3983d0f164
