@@ -1,0 +1,5 @@
+# ninja log v5
+0	4	0	clean	19c59cb4a42e16c9
+1	829	1665702971880311593	CMakeFiles/TimerQueue.dir/main.cpp.o	8e6cd595a8b2cd4a
+0	1473	1665702972520315649	CMakeFiles/TimerQueue.dir/TimerQueue.cpp.o	7e5607c2b1da091b
+1473	1556	1665702972604316181	TimerQueue	fee31bed3d0816ec
