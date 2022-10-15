@@ -1,13 +1,9 @@
 # ninja log v5
-1	496	1665791791398772284	CMakeFiles/TimeStamp.dir/TimeStamp.cpp.o	27858f8bb25a2d2c
-1	485	1665791791390772286	CMakeFiles/TimeStamp.dir/test.cpp.o	9fc5ddf727beb403
-496	558	1665791791458772274	TimeStamp	dc1be5795b90e443
-0	3	0	clean	19c59cb4a42e16c9
-0	485	1665791791390772286	CMakeFiles/TimeStamp.dir/main.cpp.o	9e8dfb4f42e45f66
-0	3	0	clean	19c59cb4a42e16c9
-1	410	1665791810902768031	CMakeFiles/TimeStamp.dir/main.cpp.o	9e8dfb4f42e45f66
-1	412	1665791810906768030	CMakeFiles/TimeStamp.dir/TimeStamp.cpp.o	27858f8bb25a2d2c
-412	474	1665791810966768015	TimeStamp	594fb0eda299be
-1	449	1665791915622719900	CMakeFiles/TimeStamp.dir/main.cpp.o	9e8dfb4f42e45f66
 1	451	1665791915622719900	CMakeFiles/TimeStamp.dir/TimeStamp.cpp.o	27858f8bb25a2d2c
+1	485	1665791791390772286	CMakeFiles/TimeStamp.dir/test.cpp.o	9fc5ddf727beb403
 451	523	1665791915698719854	TimeStamp	594fb0eda299be
+0	3	0	clean	19c59cb4a42e16c9
+1	449	1665791915622719900	CMakeFiles/TimeStamp.dir/main.cpp.o	9e8dfb4f42e45f66
+1	407	1665795120519565308	CMakeFiles/TimeStamp.dir/main.cpp.o	9e8dfb4f42e45f66
+2	407	1665795120519565308	CMakeFiles/TimeStamp.dir/TimeStamp.cpp.o	27858f8bb25a2d2c
+407	489	1665795120599565353	TimeStamp	594fb0eda299be
