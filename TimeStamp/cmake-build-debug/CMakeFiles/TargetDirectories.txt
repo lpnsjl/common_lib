@@ -1,0 +1,3 @@
+/home/andrew/桌面/common_lib/TimeStamp/cmake-build-debug/CMakeFiles/TimeStamp.dir
+/home/andrew/桌面/common_lib/TimeStamp/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/andrew/桌面/common_lib/TimeStamp/cmake-build-debug/CMakeFiles/rebuild_cache.dir
