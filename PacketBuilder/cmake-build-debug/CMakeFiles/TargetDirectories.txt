@@ -1,0 +1,3 @@
+/home/andrew/桌面/common_lib/PacketBuilder/cmake-build-debug/CMakeFiles/PacketBuilder.dir
+/home/andrew/桌面/common_lib/PacketBuilder/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/andrew/桌面/common_lib/PacketBuilder/cmake-build-debug/CMakeFiles/rebuild_cache.dir
