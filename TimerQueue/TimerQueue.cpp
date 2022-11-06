@@ -68,12 +68,12 @@ namespace SC
 
 	Timer::TimerID TimerQueue::AddTimer(SC::TimerCallBack cb, int interval, bool repeat, bool is_runnow)
 	{
+		std::unique_lock<std::mutex> lock(mutex_);
 		auto timer = std::make_shared<Timer>();
 		timer->SetCallBack(cb);
 		timer->SetInterval(interval);
 		timer->SetRepeat(repeat);
 		{
-			std::unique_lock<std::mutex> lock(mutex_);
 			uint64_t t;
 			if (is_runnow)
 			{

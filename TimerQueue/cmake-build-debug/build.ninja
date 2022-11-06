@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/andrew/project/TimerQueue/cmake-build-debug/
+cmake_ninja_workdir = /home/andrew/桌面/common_lib/TimerQueue/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target TimerQueue
 
@@ -49,7 +49,7 @@ cmake_ninja_workdir = /home/andrew/project/TimerQueue/cmake-build-debug/
 
 build cmake_object_order_depends_target_TimerQueue: phony || CMakeFiles/TimerQueue.dir
 
-build CMakeFiles/TimerQueue.dir/TimerQueue.cpp.o: CXX_COMPILER__TimerQueue_Debug /home/andrew/project/TimerQueue/TimerQueue.cpp || cmake_object_order_depends_target_TimerQueue
+build CMakeFiles/TimerQueue.dir/TimerQueue.cpp.o: CXX_COMPILER__TimerQueue_Debug /home/andrew/桌面/common_lib/TimerQueue/TimerQueue.cpp || cmake_object_order_depends_target_TimerQueue
   DEP_FILE = CMakeFiles/TimerQueue.dir/TimerQueue.cpp.o.d
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/TimerQueue.dir
@@ -57,7 +57,7 @@ build CMakeFiles/TimerQueue.dir/TimerQueue.cpp.o: CXX_COMPILER__TimerQueue_Debug
   TARGET_COMPILE_PDB = CMakeFiles/TimerQueue.dir/
   TARGET_PDB = TimerQueue.pdb
 
-build CMakeFiles/TimerQueue.dir/main.cpp.o: CXX_COMPILER__TimerQueue_Debug /home/andrew/project/TimerQueue/main.cpp || cmake_object_order_depends_target_TimerQueue
+build CMakeFiles/TimerQueue.dir/main.cpp.o: CXX_COMPILER__TimerQueue_Debug /home/andrew/桌面/common_lib/TimerQueue/main.cpp || cmake_object_order_depends_target_TimerQueue
   DEP_FILE = CMakeFiles/TimerQueue.dir/main.cpp.o.d
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/TimerQueue.dir
@@ -88,7 +88,7 @@ build TimerQueue: CXX_EXECUTABLE_LINKER__TimerQueue_Debug CMakeFiles/TimerQueue.
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/andrew/project/TimerQueue/cmake-build-debug && /opt/clion-2022.1.2/bin/cmake/linux/bin/ccmake -S/home/andrew/project/TimerQueue -B/home/andrew/project/TimerQueue/cmake-build-debug
+  COMMAND = cd /home/andrew/桌面/common_lib/TimerQueue/cmake-build-debug && /opt/clion-2022.1.2/bin/cmake/linux/bin/ccmake -S/home/andrew/桌面/common_lib/TimerQueue -B/home/andrew/桌面/common_lib/TimerQueue/cmake-build-debug
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -100,7 +100,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/andrew/project/TimerQueue/cmake-build-debug && /opt/clion-2022.1.2/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/andrew/project/TimerQueue -B/home/andrew/project/TimerQueue/cmake-build-debug
+  COMMAND = cd /home/andrew/桌面/common_lib/TimerQueue/cmake-build-debug && /opt/clion-2022.1.2/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/andrew/桌面/common_lib/TimerQueue -B/home/andrew/桌面/common_lib/TimerQueue/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -116,7 +116,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 #############################################
-# Folder: /home/andrew/project/TimerQueue/cmake-build-debug
+# Folder: /home/andrew/桌面/common_lib/TimerQueue/cmake-build-debug
 
 build all: phony TimerQueue
 

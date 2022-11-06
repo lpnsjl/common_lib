@@ -1,3 +1,3 @@
-/home/andrew/project/TimerQueue/cmake-build-debug/CMakeFiles/TimerQueue.dir
-/home/andrew/project/TimerQueue/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/andrew/project/TimerQueue/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/andrew/桌面/common_lib/TimerQueue/cmake-build-debug/CMakeFiles/TimerQueue.dir
+/home/andrew/桌面/common_lib/TimerQueue/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/andrew/桌面/common_lib/TimerQueue/cmake-build-debug/CMakeFiles/rebuild_cache.dir
