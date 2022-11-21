@@ -11,7 +11,8 @@ namespace SC
 	//
 	time_t getTimeStamp()
 	{
-		std::chrono::time_point<std::chrono::system_clock, std::chrono::milliseconds> tp = std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::system_clock::now());
+		auto tp =
+			std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now());
 		auto tmp = std::chrono::duration_cast<std::chrono::milliseconds>(tp.time_since_epoch());
 		time_t timestamp = tmp.count();
 		return timestamp;
@@ -21,10 +22,10 @@ namespace SC
 	std::atomic<Timer::TimerID> Timer::sg_id_(0);
 
 	Timer::Timer()
-			:callback_(nullptr),
-			 repeat_(false),
-			 interval_(1000),
-			 id_(sg_id_++)
+		: callback_(nullptr),
+		  repeat_(false),
+		  interval_(1000),
+		  id_(sg_id_++)
 	{
 		std::cout << "create timer: timer id is " << id_ << std::endl;
 	}
@@ -36,21 +37,19 @@ namespace SC
 
 	void Timer::run()
 	{
-		if(callback_)
+		if (callback_)
 		{
 			callback_();
 		}
 	}
 
-
 	// class TimerQueue
 	TimerQueue::TimerQueue(uint32_t thread_nums)
-	:thread_nums_(thread_nums),
-	pool_(thread_nums),
-	th_(new std::thread(&TimerQueue::Loop, this)),
-	tick_(1),
-	stop_(false)
-
+		: thread_nums_(thread_nums),
+		  pool_(thread_nums),
+		  th_(new std::thread(&TimerQueue::Loop, this)),
+		  tick_(1),
+		  stop_(false)
 	{
 
 	}
@@ -58,7 +57,7 @@ namespace SC
 	TimerQueue::~TimerQueue()
 	{
 		stop_.store(true);
-		if(th_->joinable())
+		if (th_->joinable())
 		{
 			th_->join();
 		}
@@ -94,9 +93,9 @@ namespace SC
 	{
 		std::unique_lock<std::mutex> lock(mutex_);
 		auto iter = timer_list_.begin();
-		while(iter!=timer_list_.end())
+		while (iter != timer_list_.end())
 		{
-			if(iter->second->id() == id)
+			if (iter->second->id() == id)
 			{
 				iter = timer_list_.erase(iter);
 			}
@@ -124,9 +123,9 @@ namespace SC
 				timer_list_.erase(timer_list_.begin(), end);
 			}
 			// ִ执行回调函数
-			for(auto& x: expires)
+			for (auto& x : expires)
 			{
-				if(thread_nums_ == 0)
+				if (thread_nums_ == 0)
 				{
 					x.second->run();
 				}
@@ -136,12 +135,12 @@ namespace SC
 				}
 			}
 			// 重启定时器或取消定时器
-			for(auto& x:  expires)
+			for (auto& x : expires)
 			{
 				auto timer = x.second;
-				if(timer->repeat())
+				if (timer->repeat())
 				{
-					Entry e(timer->interval()+now, timer);
+					Entry e(timer->interval() + now, timer);
 					std::unique_lock<std::mutex> lock(mutex_);
 					timer_list_.insert(e);
 				}
