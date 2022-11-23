@@ -9,4 +9,5 @@
 * TimeStamp
 时间戳功能相关函数, 支持跨平台, [详情](./TimeStamp/README.md)
 * ftplibpp
-ftp客户端库, 支持跨平台, [详情](./ftplibpp/README.md)
+ftp客户端库, 支持跨平台, [详情](./ftplibpp/README.md); **注意：在确定要对ftp服务器进行操作时，才与ftp服务器建立
+连接，如果连接后，长时间（大概120s左右）不与ftp服务器通信，ftp服务器将主动发送RST关闭连接，进而会引发段错误**

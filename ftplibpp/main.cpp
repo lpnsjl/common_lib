@@ -15,7 +15,8 @@ int main()
 	{
 		std::cout << "连接ftp服务器失败" << std::endl;
 	}
-	if(!ftp->Login("andrew", "1995sjl1005"))
+	// 该处输入ftp用户名与密码
+	if(!ftp->Login("***", "***"))
 	{
 		std::cout << "登录ftp服务器失败" << std::endl;
 	}
