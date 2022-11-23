@@ -1,0 +1,7 @@
+# ninja log v5
+3	340	1669245633702582481	CMakeFiles/ftpclient.dir/main.cpp.o	7176d6cb19638cdd
+1	212	1669245633574582394	CMakeFiles/ftpclient.dir/ftplib.cpp.o	dbb1bdea69dfcf77
+340	414	1669245633778582532	ftpclient	f4e02e19037b3d29
+0	371	1669245651262593792	CMakeFiles/ftpclient.dir/main.cpp.o	d4f5a506ccb90a74
+0	400	1669245651290593809	CMakeFiles/ftpclient.dir/ftplib.cpp.o	5865b724b42aaf04
+400	538	1669245651430593894	ftpclient	6888efdb2bc25f4b
