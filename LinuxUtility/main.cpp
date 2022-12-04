@@ -8,9 +8,12 @@
 #include <iostream>
 #include "DebugPrint.h"
 #include "SysInfo.h"
+#include "mkdirs.h"
+#include "endian.h"
 
 int main()
 {
+
 	/*获取网络速度测试*/
 //	while(1)
 //	{
@@ -29,14 +32,26 @@ int main()
 	/*获取cpuid*/
 //	std::cout << "cpuid: " << GetCpuId() << std::endl;
 
-	/***获取cpu使用率***/
-	while(1)
+//	/***获取cpu使用率***/
+//	while(1)
+//	{
+//		int cpu_usage = 0;
+//		if(GetCpuUsage(cpu_usage))
+//		{
+//			std::cout << "cpu usage: " << cpu_usage << "%" << std::endl;
+//		}
+//	}
+	// 创建目录
+	bool flag = mkdirs("./test/test/test/test");
+	flag = mkdirs("/home/andrew/test/test/test");
+	if(flag)
 	{
-		int cpu_usage = 0;
-		if(GetCpuUsage(cpu_usage))
-		{
-			std::cout << "cpu usage: " << cpu_usage << "%" << std::endl;
-		}
+		std::cout << "创建目录成功" << std::endl;
 	}
+	else
+	{
+		std::cout << "创建目录失败" << std::endl;
+	}
+
 	return 0;
 }

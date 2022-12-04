@@ -13,3 +13,5 @@ ftp客户端库, 支持跨平台, [详情](./ftplibpp/README.md); **注意：在
 连接，如果连接后，长时间（大概120s左右）不与ftp服务器通信，ftp服务器将主动发送RST关闭连接，进而会引发段错误**
 * NTPClient
 NTP客户端库, 支持Linux，[详情](./NtpClient/README.md)
+* LinuxUtility
+提供Linux下的基础函数，[详情](./LinuxUtility/README.md)

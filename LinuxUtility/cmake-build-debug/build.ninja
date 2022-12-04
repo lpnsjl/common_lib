@@ -61,6 +61,12 @@ build CMakeFiles/LinuxUtility.dir/main.cpp.o: CXX_COMPILER__LinuxUtility_Debug /
   OBJECT_DIR = CMakeFiles/LinuxUtility.dir
   OBJECT_FILE_DIR = CMakeFiles/LinuxUtility.dir
 
+build CMakeFiles/LinuxUtility.dir/mkdirs.cpp.o: CXX_COMPILER__LinuxUtility_Debug /home/andrew/桌面/common_lib/LinuxUtility/mkdirs.cpp || cmake_object_order_depends_target_LinuxUtility
+  DEP_FILE = CMakeFiles/LinuxUtility.dir/mkdirs.cpp.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/LinuxUtility.dir
+  OBJECT_FILE_DIR = CMakeFiles/LinuxUtility.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target LinuxUtility
@@ -69,7 +75,7 @@ build CMakeFiles/LinuxUtility.dir/main.cpp.o: CXX_COMPILER__LinuxUtility_Debug /
 #############################################
 # Link the executable ../bin/LinuxUtility
 
-build ../bin/LinuxUtility: CXX_EXECUTABLE_LINKER__LinuxUtility_Debug CMakeFiles/LinuxUtility.dir/SysInfo.cpp.o CMakeFiles/LinuxUtility.dir/main.cpp.o
+build ../bin/LinuxUtility: CXX_EXECUTABLE_LINKER__LinuxUtility_Debug CMakeFiles/LinuxUtility.dir/SysInfo.cpp.o CMakeFiles/LinuxUtility.dir/main.cpp.o CMakeFiles/LinuxUtility.dir/mkdirs.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/LinuxUtility.dir
   POST_BUILD = :
