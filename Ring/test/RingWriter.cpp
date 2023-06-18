@@ -61,7 +61,7 @@ int main()
         data[0] = k;
         txBytes += ring.Write((uint8_t*)data, size*sizeof(uint64_t));
         k++;
-        if(k % 5000 == 0)
+        if(k % 2500 == 0)
         {
             usleep(1);
         }

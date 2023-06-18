@@ -8,6 +8,7 @@
 #include "CShm.h"
 #include "CSem.h"
 #include "barrier.h"
+#include <vector>
 
 /**
  * 高性能无锁Ring, 支持单生产者多消费者, 适用于多进程
@@ -26,6 +27,12 @@ public:
     struct BlockHeader
     {
         uint32_t unLen;  // 块有效数据长度
+    };
+
+    struct Data
+    {
+        uint8_t *ptr;
+        uint32_t unLen;
     };
 
     /**
@@ -55,9 +62,11 @@ public:
 private:
     uint8_t *m_pData;
     uint32_t m_unReadIndex;  // 读索引, 每个进程都拥有自己的读索引
-    BlockParam *m_pstBlockParam;
+    BlockParam *m_pstBlockParam rte_aligned(64);
     CShm *m_pShm rte_aligned(64);
     CSem *m_pSem rte_aligned(64);
+    std::vector<Data> m_ptrVec;
+    uint8_t *m_pDataVec;
 };
 
 

@@ -50,6 +50,7 @@ m_unReadIndex(0)
     m_pSem->UnLock();
     m_unReadIndex = m_pstBlockParam->unWriteIndex;
     m_pData = (uint8_t*)(m_pstBlockParam+1);
+    m_pDataVec = new uint8_t[256*unBlockSize];
 }
 
 Ring::~Ring()
@@ -78,19 +79,38 @@ uint32_t Ring::Write(const uint8_t *pSrc, uint32_t unSize)
 
 uint32_t Ring::Read(uint8_t *pDst)
 {
+    if(!m_ptrVec.empty())
+    {
+        auto iter =m_ptrVec.begin();
+        pDst = iter->ptr;
+        uint32_t len = iter->unLen;
+        m_ptrVec.erase(iter);
+        return len;
+    }
     uint32_t l = m_pstBlockParam->unWriteIndex - m_unReadIndex;
     // 无数据可读
     if(l < 1)
     {
         return 0;
     }
-    uint32_t mask = m_pstBlockParam->unBlockNum - 1;
-    uint32_t offset = m_unReadIndex & mask;
-    auto p = m_pData + offset*(m_pstBlockParam->unBlockSize+sizeof(BlockHeader));
-    BlockHeader *header = (BlockHeader*)p;
-    uint32_t size = header->unLen;
-    memcpy(pDst, p+sizeof(BlockHeader), size);
-    rte_smp_wmb();
-    m_unReadIndex++;
-    return size;
+    if(l > 256)
+    {
+        l = 256;
+    }
+    Data tmp;
+    for(int i=0; i<l; i++)
+    {
+        uint32_t mask = m_pstBlockParam->unBlockNum - 1;
+        uint32_t offset = m_unReadIndex & mask;
+        auto p = m_pData + offset*(m_pstBlockParam->unBlockSize+sizeof(BlockHeader));
+        BlockHeader *header = (BlockHeader*)p;
+        uint32_t size = header->unLen;
+        memcpy(m_pDataVec+i*m_pstBlockParam->unBlockSize, p+sizeof(BlockHeader), size);
+        tmp.ptr = m_pDataVec+i*m_pstBlockParam->unBlockSize;
+        tmp.unLen = size;
+        m_ptrVec.push_back(tmp);
+        rte_smp_wmb();
+        m_unReadIndex++;
+    }
+    return 0;
 }
