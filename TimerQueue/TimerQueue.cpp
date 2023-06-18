@@ -121,6 +121,18 @@ namespace SC
 				auto end = timer_list_.lower_bound(tmp);
 				std::copy(timer_list_.begin(), end, std::back_inserter(expires));
 				timer_list_.erase(timer_list_.begin(), end);
+				
+				// 重启定时器或取消定时器
+				for (auto& x : expires)
+				{
+					auto timer = x.second;
+					if (timer->repeat())
+					{
+						Entry e(timer->interval() + now, timer);
+						std::unique_lock<std::mutex> lock(mutex_);
+						timer_list_.insert(e);
+					}
+				}
 			}
 			// ִ执行回调函数
 			for (auto& x : expires)
@@ -132,17 +144,6 @@ namespace SC
 				else
 				{
 					pool_.enqueue(std::bind(&Timer::run, x.second));
-				}
-			}
-			// 重启定时器或取消定时器
-			for (auto& x : expires)
-			{
-				auto timer = x.second;
-				if (timer->repeat())
-				{
-					Entry e(timer->interval() + now, timer);
-					std::unique_lock<std::mutex> lock(mutex_);
-					timer_list_.insert(e);
 				}
 			}
 		}
