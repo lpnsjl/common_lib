@@ -58,7 +58,7 @@ int main()
     Ring ring("test1", 20480, 8192);
     uint32_t size = 1024;
     uint64_t *data = new uint64_t[size];
-    uint64_t packetNum = 0;
+    uint64_t packetNum = 1;
     uint64_t prevPacketNum = 0;
     while(!stop)
     {
