@@ -30,7 +30,8 @@ m_pShm(nullptr),
 m_pData(nullptr),
 m_pstBlockParam(nullptr),
 m_pSem(nullptr),
-m_unReadIndex(0)
+m_unReadIndex(0),
+m_unWriteIndex(0)
 {
     unBlockNum = RoundUpPowOfTwo(unBlockNum);
     m_pSem = new CSem(sKey);
@@ -45,10 +46,8 @@ m_unReadIndex(0)
         m_pstBlockParam->flag = UINT32_MAX;
         m_pstBlockParam->unBlockNum = unBlockNum;
         m_pstBlockParam->unBlockSize = unBlockSize;
-        m_pstBlockParam->unWriteIndex = 0;
     }
     m_pSem->UnLock();
-    m_unReadIndex = m_pstBlockParam->unWriteIndex;
     m_pData = (uint8_t*)(m_pstBlockParam+1);
 }
 
@@ -66,31 +65,40 @@ uint32_t Ring::Write(const uint8_t *pSrc, uint32_t unSize)
         throw std::logic_error(msg);
     }
     uint32_t mask = m_pstBlockParam->unBlockNum - 1;
-    uint32_t offset = m_pstBlockParam->unWriteIndex & mask;
+    uint32_t offset = m_unWriteIndex & mask;
     auto p = m_pData + offset*(m_pstBlockParam->unBlockSize+sizeof(BlockHeader));
     BlockHeader *header = (BlockHeader*)p;
     header->unLen = unSize;
     memcpy(p+sizeof(BlockHeader), pSrc, unSize);
     rte_smp_wmb();
-    m_pstBlockParam->unWriteIndex++;
+    header->unWriteIndex = m_unWriteIndex;
+    m_unWriteIndex++;
     return unSize;
 }
 
 uint32_t Ring::Read(uint8_t *pDst)
 {
-    uint32_t l = m_pstBlockParam->unWriteIndex - m_unReadIndex;
-    // 无数据可读
-    if(l < 1)
-    {
-        return 0;
-    }
     uint32_t mask = m_pstBlockParam->unBlockNum - 1;
     uint32_t offset = m_unReadIndex & mask;
     auto p = m_pData + offset*(m_pstBlockParam->unBlockSize+sizeof(BlockHeader));
     BlockHeader *header = (BlockHeader*)p;
-    uint32_t size = header->unLen;
-    memcpy(pDst, p+sizeof(BlockHeader), size);
+    uint32_t unLen = header->unLen;
+    uint32_t unWriteIndex = header->unWriteIndex;
+    if(unLen == 0)
+    {
+        return 0;
+    }
+    if(unWriteIndex < m_unReadIndex)
+    {
+        return 0;
+    }
+    if(unWriteIndex > m_unReadIndex)
+    {
+        m_unReadIndex = unWriteIndex;
+        return 0;
+    }
+    memcpy(pDst, p+sizeof(BlockHeader), unLen);
     rte_smp_wmb();
     m_unReadIndex++;
-    return size;
+    return unLen;
 }

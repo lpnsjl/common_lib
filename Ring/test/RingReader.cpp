@@ -55,7 +55,7 @@ int main()
     std::thread t(Statistic);
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-    Ring ring("test1", 102400, 8192);
+    Ring ring("test1", 20480, 8192);
     uint32_t size = 1024;
     uint64_t *data = new uint64_t[size];
     uint64_t packetNum = 0;
@@ -66,8 +66,12 @@ int main()
         if(len > 0)
         {
             packetNum = data[0];
-            if(packetNum - prevPacketNum > 1)
+            if(packetNum - prevPacketNum != 1)
             {
+                std::cout << packetNum << std::endl;
+                std::cout << prevPacketNum << std::endl;
+                std::cout << packetNum -prevPacketNum << std::endl;
+                std::cout << "===" << std::endl;
                 lossPacketCnt++;
             }
             prevPacketNum = packetNum;

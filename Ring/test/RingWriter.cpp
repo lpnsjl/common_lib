@@ -52,7 +52,7 @@ int main()
 {
     std::thread t(Statistic);
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    Ring ring("test1", 102400, 8192);
+    Ring ring("test1", 20480, 8192);
     uint32_t size = 40;
     uint64_t *data = new uint64_t[size];
     uint64_t k = 0;
@@ -61,7 +61,7 @@ int main()
         data[0] = k;
         txBytes += ring.Write((uint8_t*)data, size*sizeof(uint64_t));
         k++;
-        if(k % 5000 == 0)
+        if(k % 2000 == 0)
         {
             usleep(1);
         }

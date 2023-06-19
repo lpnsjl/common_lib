@@ -8,7 +8,6 @@
 #include "CShm.h"
 #include "CSem.h"
 #include "barrier.h"
-
 /**
  * 高性能无锁Ring, 支持单生产者多消费者, 适用于多进程
  */
@@ -20,11 +19,11 @@ public:
         uint32_t flag;  // 标识共享内存是否已被创建, 共享内存被创建后, flag置为2^32-1
         uint32_t unBlockNum;
         uint32_t unBlockSize;
-        uint32_t unWriteIndex;  // 写索引
     };
 
     struct BlockHeader
     {
+        uint64_t unWriteIndex;  // 当前块的写位置
         uint32_t unLen;  // 块有效数据长度
     };
 
@@ -54,7 +53,8 @@ public:
 
 private:
     uint8_t *m_pData;
-    uint32_t m_unReadIndex;  // 读索引, 每个进程都拥有自己的读索引
+    uint64_t m_unReadIndex;  // 读索引, 每个进程都拥有自己的读索引
+    uint64_t m_unWriteIndex;  // 写索引
     BlockParam *m_pstBlockParam;
     CShm *m_pShm rte_aligned(64);
     CSem *m_pSem rte_aligned(64);
